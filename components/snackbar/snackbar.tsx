@@ -75,8 +75,16 @@ function InfoIcon(props) {
   );
 }
 
+interface MySnackbarProps {
+  type: null | 'Error' | 'Success' | 'Warning' | 'Info' | 'Hash';
+  message: null | string;
+  open: boolean;
+}
 
-class MySnackbar extends Component {
+class MySnackbar extends Component<MySnackbarProps> {
+  constructor(props: MySnackbarProps | Readonly<MySnackbarProps>) {
+    super(props);
+  }
 
   state = {
     open: this.props.open,
@@ -86,7 +94,7 @@ class MySnackbar extends Component {
     this.setState({ open: true });
   };
 
-  handleClose = (event, reason) => {
+  handleClose = (event: any, reason: string) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -105,7 +113,7 @@ class MySnackbar extends Component {
       <IconButton
         key="close"
         aria-label="Close"
-        onClick={this.handleClose}
+        onClick={this.handleClose.bind(this)}
       >
         <CloseIcon />
       </IconButton>,
@@ -144,7 +152,7 @@ class MySnackbar extends Component {
           <IconButton
             key="close"
             aria-label="Close"
-            onClick={this.handleClose}
+            onClick={this.handleClose.bind(this)}
           >
             <CloseIcon />
           </IconButton>,

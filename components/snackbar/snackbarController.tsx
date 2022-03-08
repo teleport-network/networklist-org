@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { withStyles } from '@material-ui/core/styles';
 
-import Snackbar from './snackbar.jsx'
+import Snackbar from './snackbar'
 
 import {
   ERROR,
   TX_SUBMITTED,
-} from '../../stores/constants'
+} from '../../stores/constants/constants'
 
 import stores from "../../stores";
 const emitter = stores.emitter
@@ -19,8 +19,14 @@ const styles = theme => ({
 
 class SnackbarController extends Component {
 
+  state: {
+    open: boolean;
+    snackbarType: null | 'Error' | 'Success' | 'Warning' | 'Info' | 'Hash';
+    snackbarMessage: null | string;
+  }
+
   constructor(props) {
-    super()
+    super(props)
 
     this.state = {
       open: false,

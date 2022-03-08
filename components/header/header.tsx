@@ -12,12 +12,12 @@ import {
   CONNECT_WALLET,
   TRY_CONNECT_WALLET,
   ACCOUNT_CONFIGURED
-} from '../../stores/constants'
+} from '../../stores/constants/constants'
 
 // import Unlock from '../unlock'
 
 import stores from '../../stores'
-import { formatAddress, getProvider } from '../../utils'
+import { formatAddress, getProvider } from '../../utils/utils'
 
 import classes from './header.module.css'
 
@@ -56,7 +56,7 @@ const StyledSwitch = withStyles((theme) => ({
   },
   checked: {},
   focusVisible: {},
-}))(({ classes, ...props }) => {
+}))(({ classes, ...props }: any) => {
   return (
     <Switch
       focusVisibleClassName={classes.focusVisible}

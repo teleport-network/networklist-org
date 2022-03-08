@@ -9,7 +9,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import classes from './multichain.module.css'
 
 import stores from '../../stores/index.js'
-import { getProvider } from '../../utils'
+import { getProvider } from '../../utils/utils'
 
 export default function Multichain({ closeMultichain }) {
 
