@@ -83,7 +83,7 @@ function Home({ changeTheme, theme }) {
 
   const [ layout, setLayout ] = useState('grid')
   const [ search, setSearch ] = useState('')
-  const [ hideMultichain, setHideMultichain ] = useState('1')
+  const [ hideAd, setHideAd ] = useState('1')
   const router = useRouter()
   if (router.query.search) {
     setSearch(router.query.search as string)
@@ -106,16 +106,16 @@ function Home({ changeTheme, theme }) {
   }
 
   const closeMultichain = (perma) => {
-    setHideMultichain('1')
+    setHideAd('1')
     localStorage.setItem('chainlist.org-hideMultichain', perma ? '1' : '0')
   }
 
   useEffect(() => {
     const multi = localStorage.getItem('chainlist.org-hideMultichain')
     if(multi) {
-      setHideMultichain(multi)
+      setHideAd(multi)
     } else {
-      setHideMultichain('0')
+      setHideAd('0')
     }
   }, [])
 
@@ -183,7 +183,7 @@ function Home({ changeTheme, theme }) {
               <Header changeTheme={ changeTheme } />
             </div>
             <div className={ classes.cardsContainer }>
-              { hideMultichain === '0' && <MultiChain closeMultichain={ closeMultichain } /> }
+              {/* { hideAd === '0' && <MultiChain closeMultichain={ closeMultichain } /> } */}
               {
                 data && data.filter((chain) => {
                   if(search === '') {
