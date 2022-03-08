@@ -15,8 +15,9 @@ import {
   TRY_CONNECT_WALLET,
   ACCOUNT_CONFIGURED
 } from '../../stores/constants/constants'
+import { EVMChainInfomation } from '../../typing/chain';
 
-export default function Chain({ chain }) {
+export default function Chain({ chain }: { chain: EVMChainInfomation }) {
   const router = useRouter()
 
   const [ account, setAccount ] = useState(null)
