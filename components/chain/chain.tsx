@@ -7,14 +7,14 @@ import Web3 from 'web3';
 import classes from './chain.module.css'
 
 import stores from '../../stores/index.js'
-import { getProvider } from '../../utils'
+import { getProvider } from '../../utils/utils'
 
 import {
   ERROR,
   CONNECT_WALLET,
   TRY_CONNECT_WALLET,
   ACCOUNT_CONFIGURED
-} from '../../stores/constants'
+} from '../../stores/constants/constants'
 
 export default function Chain({ chain }) {
   const router = useRouter()
@@ -59,8 +59,8 @@ export default function Chain({ chain }) {
       blockExplorerUrls: [ ((chain.explorers && chain.explorers.length > 0 && chain.explorers[0].url) ? chain.explorers[0].url : chain.infoURL) ]
     }
 
-    window.web3.eth.getAccounts((error, accounts) => {
-      window.ethereum.request({
+    window.web3?.eth.getAccounts((error, accounts) => {
+      window.ethereum?.request({
         method: 'wallet_addEthereumChain',
         params: [params, accounts[0]],
       })
@@ -98,9 +98,9 @@ export default function Chain({ chain }) {
       <div className={ classes.chainNameContainer }>
         <img
           src='/connectors/icn-asd.svg'
-          onError={e => {
-            e.target.onerror = null;
-            e.target.src = "/chains/unknown-logo.png";
+          onError={({ target }) => {
+            target.onerror = null;
+            target.src = "/chains/unknown-logo.png";
           }}
           width={ 28 }
           height={ 28 }
