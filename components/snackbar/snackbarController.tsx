@@ -35,7 +35,7 @@ class SnackbarController extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     emitter.on(ERROR, this.showError);
     emitter.on(TX_SUBMITTED, this.showHash);
   }
