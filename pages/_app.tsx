@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import SnackbarController from '../components/snackbar'
+import SnackbarController from '../components/snackbar/snackbarController'
 
 import stores from '../stores/index.js'
 
 import {
   CONFIGURE,
-} from '../stores/constants'
+} from '../stores/constants/constants'
 
 import '../styles/globals.css'
 
 import lightTheme from '../theme/light';
 import darkTheme from '../theme/dark';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const [ themeConfig, setThemeConfig ] = useState(lightTheme);
 
-  const changeTheme = (dark) => {
+  const changeTheme = (dark?: boolean) => {
     setThemeConfig(dark ? darkTheme : lightTheme)
     localStorage.setItem("yearn.finance-dark-mode", dark ? "dark" : "light");
   }
@@ -43,4 +44,6 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+// export default function MyApp({ Component, pageProps }: AppProps) {
+//   return <Component {...pageProps} />
+// }

@@ -14,13 +14,11 @@ import {
 } from '@material-ui/core'
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
-import Chain from '../components/chain'
-import MultiChain from '../components/multichain'
-import Header from '../components/header'
+import Chain from '../components/chain/chain'
+import MultiChain from '../components/multichain/multichain'
+import Header from '../components/header/header'
 
 import SearchIcon from '@material-ui/icons/Search';
-import AppsIcon from '@material-ui/icons/Apps';
-import ListIcon from '@material-ui/icons/List';
 import AddIcon from '@material-ui/icons/Add';
 import useSWR from 'swr'
 
@@ -34,7 +32,7 @@ const searchTheme = createMuiTheme({
     },
   },
   shape: {
-    borderRadius: '10px'
+    borderRadius: 10
   },
   typography: {
     fontFamily: [
@@ -78,7 +76,7 @@ const searchTheme = createMuiTheme({
   },
 });
 
-const fetcher = (...args) => fetch(...args).then(res => res.json())
+const fetcher = (url: string) => fetch(url).then(res => res.json())
 
 function Home({ changeTheme, theme }) {
   const { data, error } = useSWR('https://teleport-network.github.io/chains/chains.json', fetcher)
@@ -88,7 +86,7 @@ function Home({ changeTheme, theme }) {
   const [ hideMultichain, setHideMultichain ] = useState('1')
   const router = useRouter()
   if (router.query.search) {
-    setSearch(router.query.search)
+    setSearch(router.query.search as string)
     delete router.query.search
   }
 
