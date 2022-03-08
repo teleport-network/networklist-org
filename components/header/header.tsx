@@ -77,7 +77,7 @@ function Header(props) {
 
   const [ account, setAccount ] = useState(null)
   const [ darkMode, setDarkMode ] = useState(props.theme.palette.type === 'dark' ? true : false);
-  const [ unlockOpen, setUnlockOpen ] = useState(false);
+  // const [ unlockOpen, setUnlockOpen ] = useState(false);
 
   useEffect(() => {
     const accountConfigure = () => {
