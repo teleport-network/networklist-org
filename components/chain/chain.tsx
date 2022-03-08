@@ -98,9 +98,9 @@ export default function Chain({ chain }) {
       <div className={ classes.chainNameContainer }>
         <img
           src='/connectors/icn-asd.svg'
-          onError={({ target }) => {
-            target.onerror = null;
-            target.src = "/chains/unknown-logo.png";
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src = "/chains/unknown-logo.png";
           }}
           width={ 28 }
           height={ 28 }
