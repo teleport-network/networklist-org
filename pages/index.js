@@ -81,7 +81,7 @@ const searchTheme = createMuiTheme({
 const fetcher = (...args) => fetch(...args).then(res => res.json())
 
 function Home({ changeTheme, theme }) {
-  const { data, error } = useSWR('https://chainid.network/chains.json', fetcher)
+  const { data, error } = useSWR('https://teleport-network.github.io/chains/chains.json', fetcher)
 
   const [ layout, setLayout ] = useState('grid')
   const [ search, setSearch ] = useState('')
@@ -104,7 +104,7 @@ function Home({ changeTheme, theme }) {
   }
 
   const addNetwork = () => {
-    window.open('https://github.com/ethereum-lists/chains', '_blank')
+    window.open('https://github.com/teleport-network/chains', '_blank')
   }
 
   const closeMultichain = (perma) => {
@@ -124,7 +124,7 @@ function Home({ changeTheme, theme }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Chainlist</title>
+      <title>Teleport Chainlist</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
 
