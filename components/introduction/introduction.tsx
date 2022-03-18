@@ -4,7 +4,8 @@ import classes from './introduction.module.css';
 import AddIcon from '@material-ui/icons/Add';
 import { StyledSwitch } from '../header/header';
 import { useRouter } from 'next/router';
-
+import CosmosIcon from "./cosmos.svg"
+import EthIcon from "./ethereum-1.svg"
 
 export function Introduction() {
     const router = useRouter()
@@ -32,8 +33,8 @@ export function Introduction() {
       <Typography className={classes.subTitle}>Teleport Chainlist is a list of EVM and Cosmos networks. Users can use the information to connect their wallets and Web3 middleware providers to the appropriate Chain ID and Network ID to connect to the correct chain.</Typography>
       <div className={ classes.themeSelectContainer }>
         <StyledSwitch
-        //   icon={ <Brightness2Icon className={ classes.switchIcon }/> }
-        //   checkedIcon={ <WbSunnyOutlinedIcon className={ classes.switchIcon }/> }
+          checkedIcon={<CosmosIcon className={ classes.switchIcon } />}
+          icon={ <EthIcon className={ classes.ethIcon } /> }
           checked={ isCosmosChecked }
           onChange={ handleToggleChange }
         />
