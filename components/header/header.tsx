@@ -21,7 +21,7 @@ import { formatAddress, getProvider } from '../../utils/utils'
 
 import classes from './header.module.css'
 
-const StyledSwitch = withStyles((theme) => ({
+export const StyledSwitch = withStyles((theme) => ({
   root: {
     width: 58,
     height: 32,

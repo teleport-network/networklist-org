@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Typography, Button } from '@material-ui/core';
 import classes from './introduction.module.css';
 import AddIcon from '@material-ui/icons/Add';
+import { StyledSwitch } from '../header/header';
+import { useRouter } from 'next/router';
 
 
 export function Introduction() {
+    const router = useRouter()
+    
     const addNetwork = () => {
         window.open('https://github.com/teleport-network/chains', '_blank')
+    }
+
+    const isCosmosChecked = useMemo(() => {
+        return router.pathname === '/cosmos';
+    }, [router]);
+
+    const handleToggleChange = () => {
+        if (isCosmosChecked) {
+            router.push('/');
+        } else {
+            router.push('/cosmos');
+        }
     }
 
     return <div className={ classes.copyContainer }>
@@ -14,6 +30,14 @@ export function Introduction() {
       <Typography variant='h1' className={ classes.chainListSpacing }><span className={ classes.helpingUnderline }>Teleport Chainlist</span></Typography>
       <Typography variant='h2' className={ classes.helpingParagraph }>Helping users connect to EVM and Cosmos powered networks</Typography>
       <Typography className={classes.subTitle}>Teleport Chainlist is a list of EVM and Cosmos networks. Users can use the information to connect their wallets and Web3 middleware providers to the appropriate Chain ID and Network ID to connect to the correct chain.</Typography>
+      <div className={ classes.themeSelectContainer }>
+        <StyledSwitch
+        //   icon={ <Brightness2Icon className={ classes.switchIcon }/> }
+        //   checkedIcon={ <WbSunnyOutlinedIcon className={ classes.switchIcon }/> }
+          checked={ isCosmosChecked }
+          onChange={ handleToggleChange }
+        />
+      </div>
       <Button
         size='large'
         color='primary'
